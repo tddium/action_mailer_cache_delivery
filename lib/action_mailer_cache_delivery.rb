@@ -1,7 +1,9 @@
+require 'tmpdir'
+
 ActionMailer::Base.class_eval do
 
   DELIVERIES_CACHE_PATH =
-    File.join(RAILS_ROOT,'tmp','cache','action_mailer_cache_deliveries.cache')
+    File.join(Dir.tmpdir, 'action_mailer_cache_deliveries.cache')
 
   def perform_delivery_cache(mail)
     deliveries << mail
